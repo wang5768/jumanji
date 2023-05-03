@@ -114,7 +114,7 @@ class BinPack(Environment[State]):
 
     def __init__(
         self,
-        generator: Optional[Generator] = None,
+        generator: Optional[CSVGenerator] = None,
         obs_num_ems: int = 70,
         reward_fn: Optional[RewardFn] = None,
         normalize_dimensions: bool = True,
@@ -146,7 +146,7 @@ class BinPack(Environment[State]):
             viewer: `Viewer` used for rendering. Defaults to `BinPackViewer` with "human" render
                 mode.
         """
-        self.generator = generator or RandomGenerator(max_num_items=30, max_num_ems=100)
+        self.generator = generator or CSVGenerator(csv_path=None, max_num_ems=100, container_dims=None)
         self.obs_num_ems = obs_num_ems
         self.reward_fn = reward_fn or DenseReward()
         self.normalize_dimensions = normalize_dimensions
