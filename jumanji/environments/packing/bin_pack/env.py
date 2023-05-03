@@ -205,6 +205,7 @@ class BinPack(Environment[State]):
                 )
                 for coord_name in ["x1", "x2", "y1", "y2", "z1", "z2"]
             }
+            
         ems = specs.Spec(EMS, "EMSSpec", **ems_dict)
         ems_mask = specs.BoundedArray((obs_num_ems,), bool, False, True, "ems_mask")
         if self.normalize_dimensions:
