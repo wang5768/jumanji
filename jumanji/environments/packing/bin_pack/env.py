@@ -23,7 +23,7 @@ from numpy.typing import NDArray
 
 from jumanji import specs
 from jumanji.env import Environment
-from jumanji.environments.packing.bin_pack.generator import Generator, RandomGenerator
+from jumanji.environments.packing.bin_pack.generator import Generator, RandomGenerator, CSVGenerator
 from jumanji.environments.packing.bin_pack.reward import DenseReward, RewardFn
 from jumanji.environments.packing.bin_pack.space import Space
 from jumanji.environments.packing.bin_pack.types import (
@@ -114,7 +114,7 @@ class BinPack(Environment[State]):
 
     def __init__(
         self,
-        generator: Optional[CSVGenerator] = None,
+        generator: Optional[Generator] = None,
         obs_num_ems: int = 70,
         reward_fn: Optional[RewardFn] = None,
         normalize_dimensions: bool = True,
@@ -146,7 +146,7 @@ class BinPack(Environment[State]):
             viewer: `Viewer` used for rendering. Defaults to `BinPackViewer` with "human" render
                 mode.
         """
-        self.generator = generator or CSVGenerator(csv_path=None, max_num_ems=100, container_dims=None)
+        self.generator = generator or CSVGenerator(csv_path='/content/amazon_data.csv', max_num_ems=100, container_dims=(5870, 2330, 2200))
         self.obs_num_ems = obs_num_ems
         self.reward_fn = reward_fn or DenseReward()
         self.normalize_dimensions = normalize_dimensions
