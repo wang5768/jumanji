@@ -146,7 +146,7 @@ class BinPack(Environment[State]):
             viewer: `Viewer` used for rendering. Defaults to `BinPackViewer` with "human" render
                 mode.
         """
-        self.generator = generator or CSVGenerator(csv_path='/content/amazon_data.csv', max_num_ems=100, container_dims=(5870, 2330, 2200))
+        self.generator = generator or CSVGenerator(csv_path='/content/amazon_data.csv', max_num_ems=100, container_dims=(50, 50, 50))
         self.obs_num_ems = obs_num_ems
         self.reward_fn = reward_fn or DenseReward()
         self.normalize_dimensions = normalize_dimensions
